@@ -6,7 +6,7 @@ MAINTAINER test
 RUN yum update -y
 
 # install package
-RUN yum -y install vim git
+RUN yum -y install vim git rsync
 RUN yum -y install passwd openssh openssh-server openssh-clients sudo
 
 # Create user
