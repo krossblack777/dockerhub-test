@@ -6,8 +6,8 @@ MAINTAINER test
 RUN yum update -y
 
 # install package
-RUN yum -y install vim git rsync
-RUN yum -y install passwd openssh openssh-server openssh-clients sudo
+RUN yum -y install passwd openssh openssh-server openssh-clients sudo rsync git vim
+RUN curl -L https://www.opscode.com/chef/install.sh | bash
 
 # Create user
 RUN useradd docker
