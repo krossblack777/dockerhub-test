@@ -25,8 +25,10 @@ RUN yum -y install passwd openssh openssh-server openssh-clients sudo rsync git 
 # Set up SSHD config
 
     sed -ri 's/#PermitRootLogin yes/PermitRootLogin yes/g' /etc/ssh/sshd_config && \
-#    sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config && \
-#    sed -ri 's/#UsePAM no/UsePAM no/g' /etc/ssh/sshd_config && \
+    #sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config && \
+    #sed -ri 's/#UsePAM no/UsePAM no/g' /etc/ssh/sshd_config && \
+    # PAMを利用するときには下記をオフにしないとSSHログインできない
+    sed -i -e 's/^\(session.*pam_loginuid.so\)/#\1/g' && \
 
 
 # Init SSHD
